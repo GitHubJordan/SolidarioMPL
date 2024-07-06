@@ -1,0 +1,95 @@
+/* donations/static/css/styles.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ff6908, #ff9c1d);
+    margin: 0;
+    padding: 0;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    background: #fff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+form input, form button {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input:focus, form button:focus {
+    outline: none;
+    border-color: #ff6908;
+}
+
+form button {
+    background: #ff6908;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #ff9c1d;
+}
+
+.error {
+    background: #ffdddd;
+    border-left: 4px solid #f44336;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.error ul {
+    margin: 0;
+    padding: 0;
+}
+
+.error li {
+    list-style: none;
+    color: #d8000c;
+    text-align: left;
+}
+
+.link {
+    display: block;
+    margin-top: 20px;
+    color: #ff6908;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #ff9c1d;
+}

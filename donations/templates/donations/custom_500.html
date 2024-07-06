@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro no Servidor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+        }
+        h1 {
+            color: #6a11cb;
+        }
+        p {
+            font-size: 18px;
+        }
+        .debug-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Erro no Servidor</h1>
+        <p>Algo deu errado. Estamos trabalhando para corrigir o problema.</p>
+        <div class="debug-info">
+            <h3>Detalhes do Erro (para desenvolvimento):</h3>
+            <pre>{{ exception }}</pre>
+        </div>
+    </div>
+</body>
+</html>

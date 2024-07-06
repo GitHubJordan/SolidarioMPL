@@ -1,0 +1,32 @@
+<!-- donations/admin_items_sold.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">Itens Vendidos</h1>
+
+{% if items %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Comprado</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.comprado_por}}</td>
+                <td>{{ item.estado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum item vendido.</p>
+{% endif %}
+
+{% endblock %}

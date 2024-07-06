@@ -1,0 +1,27 @@
+<!-- templates/donations/admin_user_list.html -->
+{% extends 'donations/dashboard.html' %}
+{% block content %}
+<h1 class="text-center mt-4">Usuários</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome de Usuário</th>
+            <th>Email</th>
+            <th>Nome Completo</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.phone_number }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!-- donations/admin_activity_list.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">Lista de Atividades</h1>
+
+<div class="container mt-5">
+    <a href="{% url 'admin_activity_create' %}" class="btn btn-primary mb-3">Adicionar Nova Atividade</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Organizador</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in activities %}
+            <tr>
+                <td>{{ activity.title }}</td>
+                <td>{{ activity.organizer.username }}</td>
+                <td>{{ activity.date }}</td>
+                <td>
+                    <a href="{% url 'admin_activity_edit' activity.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'admin_activity_delete' activity.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

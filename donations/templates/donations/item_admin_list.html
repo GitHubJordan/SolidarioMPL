@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Itens em Análise</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+    
+    <h2>Itens em Análise</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Doado por</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.donated_by }}</td>
+                <td>
+                    <a href="{% url 'admin:edit_item' item.id %}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

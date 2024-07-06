@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SolidárioMPL</title>
+    <meta name="description" content="SolidárioMPL - Transformando Vidas Através da Solidariedade">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social_media.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        .banner {
+            background-image: url("{% static 'images/Banner_Doacao.png' %}");
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 40px;
+        }
+        .banner_2 {
+            background-image: url("{% static 'images/Banner_Doacao3.png' %}");
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 40px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 1200px) {
+            .banner, .banner_2 {
+                height: 500px; /* adjust height for smaller screens */
+            }
+        }
+
+        @media (max-width: 992px) {
+            .banner, .banner_2 {
+                height: 400px; /* further adjustment */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner, .banner_2 {
+                height: 300px; /* further adjustment */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .banner, .banner_2 {
+                height: 300px; /* further adjustment */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="margin-top"><span></span></div>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+        
+        <section class="hero">
+            <div class="container">
+                <h2>Transformando Vidas Através da Solidariedade</h2>
+                <p>Junte-se a nós para fazer a diferença na vida de muitas pessoas.</p>
+                <a href="{% url 'donate' %}" class="btn btn-primary">Fazer Doação</a>
+                <a href="{% url 'register' %}" class="btn btn-secondary">Juntar-se à Equipe</a>
+                <a href="{% url 'items_for_sale' %}" class="btn btn-tertiary">Fazer Compras</a>
+            </div>
+        </section>
+    {% endif %}
+
+    <div class="banner"></div>
+
+    <section class="our-project" id="sobre">
+        <div class="container">
+            <div class="div_img">
+                <img src="{% static 'images/hands2.jpg' %}" alt="Nosso Projeto" class="styled-image">
+            </div>
+            <div class="div_cont">
+                <h2>Nosso Projeto</h2>
+                <p>Bem-vindo ao SolidárioMPL</p>
+                <p>No SolidárioMPL, acreditamos no poder da solidariedade para transformar vidas. Nosso projeto social foi criado com o objetivo de apoiar e fortalecer comunidades vulneráveis, proporcionando recursos essenciais e oportunidades para um futuro melhor. Trabalhamos incansavelmente para promover educação, saúde, alimentação e desenvolvimento sustentável. Com a colaboração de voluntários dedicados e doadores generosos, conseguimos alcançar um impacto significativo na vida de muitas pessoas.</p>
+                <p>Nosso projeto visa:</p>
+                <ul>
+                    <li><strong>Educação:</strong> Fornecer material escolar, apoio educativo e promover o acesso à educação de qualidade.</li>
+                    <li><strong>Saúde:</strong> Organizar campanhas de saúde, oferecer serviços médicos básicos e conscientizar sobre práticas de saúde.</li>
+                    <li><strong>Alimentação:</strong> Distribuir alimentos e refeições para famílias em situação de vulnerabilidade.</li>
+                    <li><strong>Desenvolvimento Sustentável:</strong> Implementar projetos que promovam a autossuficiência e a sustentabilidade nas comunidades.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-to-help">
+        <div class="container">
+            <div class="div_cont">
+                <h2>Como Ajudar</h2>
+                <p>Junte-se a nós e faça a diferença!</p>
+                <p>Existem várias maneiras de contribuir para o SolidárioMPL e apoiar nossa causa:</p>
+                <ul>
+                    <li><strong>Doações Financeiras:</strong> Sua contribuição financeira é essencial para mantermos e expandirmos nossos projetos. Qualquer quantia faz uma grande diferença.</li>
+                    <li><strong>Doação de Itens:</strong> Aceitamos doações de alimentos, roupas, material escolar e produtos de higiene.</li>
+                    <li><strong>Voluntariado:</strong> Dedique seu tempo e habilidades para ajudar diretamente em nossos projetos. Há muitas oportunidades para voluntários, desde a organização de eventos até o trabalho em campo.</li>
+                    <li><strong>Parcerias:</strong> Empresas e organizações podem colaborar conosco por meio de parcerias, patrocínios e programas de responsabilidade social corporativa.</li>
+                    <li><strong>Divulgação:</strong> Ajude a espalhar a palavra sobre nosso projeto. Compartilhe nossas campanhas e eventos nas redes sociais e convide amigos e familiares a se envolverem.</li>
+                </ul>
+            </div>
+            <div class="div_img">
+                <img src="{% static 'images/people-holding.jpg' %}" alt="Como Ajudar" class="styled-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Depoimentos</h2>
+            <div class="testimonial">
+                <p>"Quando conheci o SolidárioMPL, estava passando por um momento difícil. Com a ajuda deles, consegui alimentos para minha família e apoio escolar para meus filhos. Sou eternamente grata pelo impacto positivo que tiveram em nossas vidas."</p>
+                <h3>Maria Silva</h3>
+            </div>
+            <div class="testimonial">
+                <p>"Ser voluntário no SolidárioMPL foi uma das experiências mais gratificantes da minha vida. Pude ver de perto a mudança que o projeto traz para a comunidade e fazer parte dessa transformação foi incrível."</p>
+                <h3>João Pereira</h3>
+            </div>
+            <div class="testimonial">
+                <p>"Graças ao projeto, consegui realizar um curso profissionalizante e agora tenho um emprego estável. O SolidárioMPL não apenas me ajudou em um momento de necessidade, mas também me deu as ferramentas para construir um futuro melhor."</p>
+                <h3>Ana Souza</h3>
+            </div>
+            <div class="testimonial">
+                <p>"Como empresário, busquei uma maneira de retribuir à comunidade e encontrei no SolidárioMPL o parceiro ideal. A parceria com eles tem sido uma experiência enriquecedora e altamente impactante."</p>
+                <h3>Carlos Ferreira</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container_banner">
+            <div class="conteudo">
+                <p id="ajude">Ajude-nos a conseguir</br>suprementos para pessoas</br>vivendo em pobreza extrema.</p>
+                <p id="de"><strong>DÊ ALGO PARA</br>AQUELES QUE</br>NÃO TÊM</br>NADA.</strong></p>
+                <p id="quero">"Quero que as pessoas imaginem</br>como que seria viver com menos de</br>100 kwanzas por dia. Essa é a</br>realidade que milhares de pessoas</br>enfrentam ao redor do mundo."</p>
+                <h3> - ONGs SolidárioMPL.</h3>
+            </div>
+            <div class="banner_2"></div>
+        </div>
+        <div class="container-1">
+            <div class="container-2">
+                <div class="foot_logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Logotipo" class="styled-image-foot">
+                    <div class="solidario">
+                        <p id="solid"><strong>SolidárioMPL</strong></p>
+                        <p id="solid-1">CONECTANDO</p>
+                        <p id="solid-2">CORAÇÃO SOLIDÁRIO</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <h3><strong>Contactos</strong></h3>
+                    <ul>
+                        <li><a href="#">(244) 923 031 684</a></li>
+                        <li><a href="#">(244) 956 632 925</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Rede Social</h3>
+                    <div class="rounded-social-buttons">
+                        <a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a class="social-button tiktok" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script src="" async defer></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- donations/templates/donations/login.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <title>Login - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Faça login na sua conta</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+                <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+
+            <button type="submit">Login</button>
+        </form>
+        <a href="{% url 'register' %}" class="link">Não tem uma conta? Registro</a>
+    </div>
+</body>
+</html>

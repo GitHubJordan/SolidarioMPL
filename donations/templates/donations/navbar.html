@@ -1,0 +1,31 @@
+{% load static %}
+<header>
+    <div class="container_navbar">
+        <a href="{% url 'home' %}" class="logotipo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="70px">
+            <h1>SolidárioMPL</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Início</a></li>
+                <li><a href="{% url 'items_for_sale' %}">Loja - Bazar Online</a></li>
+                <li><a href="{% url 'donate' %}">Doar - Ajude-nos</a></li>
+                <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+            </ul>
+        </nav>
+        <div class="user">
+            <div class="login-register">
+                <div class="login">
+                    <ul>
+                        <li><a href="{% url 'login' %}">Iniciar sessão</a></li>
+                    </ul>
+                </div>
+                <div class="register">
+                    <ul>
+                        <li><a href="{% url 'register' %}">Registar-se</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

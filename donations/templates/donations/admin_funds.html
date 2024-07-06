@@ -1,0 +1,104 @@
+<!-- donations/admin_funds.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">Fundos</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total de Doações</div>
+                <div class="card-body">
+                    <h5 class="card-title" id="donations_funds"></h5>
+                    <p class="card-text">Valor total recebido em doações.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total dos Itens Vendidos</div>
+                <div class="card-body">
+                    <h5 class="card-title" id="itens_sold_funds"></h5>
+                    <p class="card-text">Valor total dos itens vendidos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-header">Total Geral</div>
+                <div class="card-body">
+                    <h5 class="card-title" id="acoes_funds"></h5>
+                    <p class="card-text">Soma total das doações e dos itens vendidos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <canvas id="fundsChart"></canvas>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Voltar ao Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const donations_value = {{ total_donations }}
+    const acoes_value = {{ total_acao }}
+
+    const donations_funds_value = {{ total_donations }}
+    const acoes_funds_value = {{ total_general }}
+    const itens_sold_funds_value = {{ total_sold_value }}
+
+    const donations = document.querySelector("#donations")
+    const acoes = document.querySelector("#acoes")
+
+    const donations_funds = document.querySelector("#donations_funds")
+    const acoes_funds = document.querySelector("#acoes_funds")
+    const itens_sold_funds = document.querySelector("#itens_sold_funds")
+
+    donations.innerHTML = donations_value.toLocaleString('pt-AO', {style: 'currency', currency: 'AOA'});
+    acoes.innerHTML = acoes_value.toLocaleString('pt-AO', {style: 'currency', currency: 'AOA'});
+
+    donations_funds.innerHTML = donations_value.toLocaleString('pt-AO', {style: 'currency', currency: 'AOA'});
+    itens_sold_funds.innerHTML = itens_sold_funds_value.toLocaleString('pt-AO', {style: 'currency', currency: 'AOA'});
+    acoes_funds.innerHTML = acoes_funds_value.toLocaleString('pt-AO', {style: 'currency', currency: 'AOA'});
+
+    var ctx = document.getElementById('fundsChart').getContext('2d');
+    var fundsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Doações', 'Itens Vendidos', 'Total Geral'],
+            datasets: [{
+                label: 'Valor em Kz',
+                data: [{{ total_donations }}, {{ total_sold_value }}, {{ total_general }}],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(30, 30, 30, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(30, 30, 30, 1)'
+                ],
+                borderWidth: 3
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

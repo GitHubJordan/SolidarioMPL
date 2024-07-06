@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <title>Register - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Crie a sua conta aqui</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+                <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.full_name.id_for_label }}">{{ form.full_name.label }}</label>
+                {{ form.full_name }}
+                {% for error in form.full_name.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.phone_number.id_for_label }}">{{ form.phone_number.label }}</label>
+                {{ form.phone_number }}
+                {% for error in form.phone_number.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                {{ form.password1 }}
+                {% for error in form.password1.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                {{ form.password2 }}
+                {% for error in form.password2.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <a href="{% url 'login' %}" class="link">já tem uma conta? Conecte-se</a>
+    </div>
+</body>
+</html>

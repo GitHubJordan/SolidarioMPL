@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Não Encontrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+        }
+        h1 {
+            color: #6a11cb;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Página Não Encontrada</h1>
+        <p>A página que você está procurando não existe.</p>
+        <p><a href="{% url 'home' %}">Voltar para a página inicial</a></p>
+    </div>
+</body>
+</html>

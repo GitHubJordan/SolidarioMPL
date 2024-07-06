@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news_activity.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+
+    <div class="container_news">
+        <div class="container mt-5">
+            <h2 class="text-center mt-4">Notícias</h2>
+            <div class="row">
+                {% for news in news_list %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <p class="card-text">{{ news.content|truncatewords:20 }}</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal{{ news.id }}">
+                                Leia mais
+                            </button>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Publicado em: {{ news.created_at }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="newsModal{{ news.id }}" tabindex="-1" aria-labelledby="newsModalLabel{{ news.id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newsModalLabel{{ news.id }}">{{ news.title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ news.content }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

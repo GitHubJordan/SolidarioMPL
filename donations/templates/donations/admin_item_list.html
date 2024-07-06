@@ -1,0 +1,31 @@
+<!-- templates/donations/admin_item_list.html -->
+{% extends 'donations/dashboard.html' %}
+{% block content %}
+<h1 class="text-center mt-4">Itens</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Doador</th>
+            <th>Estado</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.donated_by.user.username }}</td>
+            <td>{{ item.estado }}</td>
+            <td>{{ item.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

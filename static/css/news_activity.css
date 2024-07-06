@@ -1,0 +1,58 @@
+/* static/css/news_activity.css */
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+.container_news {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-footer {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.btn-primary {
+    color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #004085;
+}
+
+footer {
+    background-color: #6a11cb;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}

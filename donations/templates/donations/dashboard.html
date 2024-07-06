@@ -1,0 +1,149 @@
+<!-- templates/donations/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'admin_dashboard' %}">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_user_list' %}">
+                                Usuários
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'admin_register' %}">Registrar Usuário</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_donation_list' %}">
+                                Doações
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropbtn" href="{% url 'admin_item_list' %}">
+                                Itens
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'register_item' %}">Registrar itens</a>
+                                <a href="{% url 'admin_items_in_analysis' %}">Itens em análise</a>
+                                <a href="{% url 'admin_items_sold' %}">Itens vendidos</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_news_list' %}">
+                                Notícias
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'admin_news_create' %}">Adicionar Notícia</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin_activity_list' %}">
+                                Atividades
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'admin_activity_create' %}">Adicionar Atividade</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <nav class="nav-button-list">
+                        <div>
+                            <ul>
+                                <a href="{% url 'admin_funds' %}" class="btn btn-outline-primary">Total das ações: <span id="acoes"></span></a>
+                                <li><a href="{% url 'home' %}?visit_site=true">Visitar o Site</a></li>
+                                <li><a href="{% url 'logout' %}">Sair</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">Total de Doações</div>
+                            <div class="card-body">
+                                <h5 class="card-title" id="donations"></h5>
+                                <p class="card-text">Total de doações recebidas.</p>
+                                <a href="{% url 'admin_donation_list' %}" class="btn btn-light">Ver Doações</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-white bg-success mb-3">
+                            <div class="card-header">Total de Itens</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_items }}</h5>
+                                <p class="card-text">Total de itens doados.</p>
+                                <a href="{% url 'admin_item_list' %}" class="btn btn-light">Ver Itens</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-white bg-warning mb-3">
+                            <div class="card-header">Total de Usuários</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_users }}</h5>
+                                <p class="card-text">Total de usuários registrados.</p>
+                                <a href="{% url 'admin_user_list' %}" class="btn btn-light">Ver Usuários</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-white bg-info mb-3">
+                            <div class="card-header">Notícias</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_news }}</h5>
+                                <p class="card-text">Total de notícias publicadas.</p>
+                                <a href="{% url 'admin_news_list' %}" class="btn btn-light">Ver Notícias</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card text-white bg-secondary mb-3">
+                            <div class="card-header">Atividades</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_activities }}</h5>
+                                <p class="card-text">Total de atividades organizadas.</p>
+                                <a href="{% url 'admin_activity_list' %}" class="btn btn-light">Ver Atividades</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const donations_value = {{ total_donations }}
+        const acoes_value = {{ total_acao }}
+
+        const donations = document.querySelector("#donations")
+        const acoes = document.querySelector("#acoes")
+
+        donations.innerHTML = donations_value.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' });
+        acoes.innerHTML = acoes_value.toLocaleString('pt-AO', { style: 'currency', currency: 'AOA' });
+    </script>
+</body>
+
+</html>

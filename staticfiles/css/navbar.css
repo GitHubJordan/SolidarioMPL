@@ -1,0 +1,243 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6a11cb;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header .container_navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 10px 20px;
+    width: 100%;
+}
+
+header .logotipo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .logotipo img {
+    max-width: 70px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+}
+
+header .logotipo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    left: 70px;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #f7f7f7;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    position: relative;
+    transition: .77s ease;
+}
+
+header nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f7f7f7;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+header nav ul li a:hover::before {
+    visibility: visible;
+    width: 100%;
+}
+
+header .user {
+    display: flex;
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header .user .login-register {
+    display: flex;
+    position: relative;
+    left: 0;
+}
+
+header .login, header .register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+}
+
+header .login ul, header .register ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .login ul li, header .register ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .login ul li a, header .register ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+header .login ul li a {
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+header .login:hover ul li a {
+    color: #ff9c1d;
+    transition: all 0.3s ease-in-out;
+}
+
+header .register {
+    display: flex;
+    border: 2px solid #ff9c1d;
+    border-radius: 5px;
+    background-color: #ff9c1d;
+    transition: all .55s;
+}
+
+header .register ul li a {
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+header .register:hover {
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all .55s;
+    transition: all 0.3s ease-in-out;
+}
+
+header .register:hover ul li a {
+    color: #ff9c1d;
+}
+
+header .username {
+    display: flex;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    right: 0;
+}
+
+header .username:hover {
+    cursor: pointer;
+}
+
+header .name {
+    display: flex;
+    border: 2px solid #f7f7f7;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+header .name p {
+    color: #f7f7f7;
+}
+
+header .hidemenu {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    top: 100%;
+    left: 10px;
+    width: 100%;
+    height: 0;
+    transform: scaleY(0);
+    background-color: #f7f7f7;
+    border: 1px solid #6a11cb;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+header .hidemenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header .hidemenu ul li a {
+    display: block;
+    color: #6a11cb;
+    text-decoration: none;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+header .hidemenu ul li a:hover {
+    opacity: 60%;
+    transform: translate(10px, 5px);
+    transition: all 0.3s ease-in-out;
+}
+
+header .username:hover .hidemenu {
+    display: block;
+    opacity: 1;
+    height: 190%;
+    transform: scaleY(1);
+    transition: all 0.3s ease-in-out;
+}

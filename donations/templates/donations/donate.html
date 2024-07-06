@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doe Agora - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/donate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+    
+    <div class="container_donate">
+        <header>
+            <div class="logo">            
+                <img src="{% static 'images/hands.png' %}" width="200px" alt="Logo">
+            </div>
+            <h1>Doe Agora</h1>
+        </header>
+        
+        <main>
+            <h2>Faça uma Doação</h2>
+            <p>Bem-vindo, {{ username }}! Obrigado por considerar uma doação.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.amount.label_tag }}<br>
+                    {{ form.amount }}
+                    {% if form.amount.errors %}
+                        <div class="error">
+                            {% for error in form.amount.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.message.label_tag }}<br>
+                    {{ form.message }}
+                    {% if form.message.errors %}
+                        <div class="error">
+                            {% for error in form.message.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% if form.non_field_errors %}
+                    <div class="error">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn">Doar</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

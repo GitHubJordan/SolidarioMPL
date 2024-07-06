@@ -1,0 +1,488 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.hero .container {
+    transform: translate(5%);
+}
+
+.hero .btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 5px;
+    display: inline-block;
+}
+
+.hero .btn-primary {
+    background: #ff9c1d;
+}
+
+.hero .btn-secondary {
+    background: #ff771d;
+}
+
+.hero .btn-tertiary {
+    background: #ff551d;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.our-project, .how-to-help, .testimonials {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    padding: 40px;
+}
+
+.our-project h2, .how-to-help h2, .testimonials h2 {
+    text-align: center;
+    color: #6a11cb;
+    margin-bottom: 30px;
+    font-size: 32pt;
+}
+
+.our-project .container, .how-to-help .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div_img {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+}
+
+.our-project .div_img {
+    width: 200%;
+}
+
+.styled-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.styled-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.testimonial {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.testimonial p {
+    font-style: italic;
+}
+
+.testimonial h3 {
+    text-align: right;
+    color: #6a11cb;
+    margin-top: 10px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #6a11cb;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+footer .container_banner {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+footer .container-1 {
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+footer .conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    padding: 20px;
+}
+
+footer .conteudo p {
+    margin: 5px 0;
+    text-align: left;
+    font-size: 20pt;
+}
+
+footer .conteudo h3 {
+    margin: -5px 0;
+    padding: 0;
+    text-align: left;
+    font-size: 18pt;
+}
+
+footer #quero, footer .conteudo h3 {
+    font-style: italic;
+}
+
+footer #de {
+    font-size: 46pt;
+}
+
+footer .container-2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+}
+
+footer .container-2 .foot_logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    scale: 1;
+    width: 70%;
+    margin: 0;
+    padding: 0;
+}
+
+footer .container-2 .foot_logo p {
+    text-align: left;
+    font-size: 26px;
+}
+
+footer .container-2 .foot_logo img {
+    width: 200px;
+    margin: 0;
+    padding: 20px 0;
+}
+
+footer .container-2 .foot_logo #solid {
+    font-weight: bold;
+    font-size: 26pt;
+    margin-bottom: -20px;
+}
+
+footer .container-2 .foot_logo #solid-1 {
+    color: #D369E7;
+    font-weight: bold;
+    font-size: 32pt;
+}
+
+footer .container-2 .foot_logo #solid-2 {
+    color: #FF7827;
+    font-weight: bold;
+    font-size: 24pt;
+    margin-top: -32px;
+}
+
+footer .container-1 p {
+    margin: 20px 0;
+}
+
+footer .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 100px;
+    padding: 0;
+    font-size: 14pt;
+    width: 350px;
+}
+
+footer .contact ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+footer .contact ul li {
+    padding: 5px 0;
+}
+
+footer .contact ul li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+}
+
+footer .contact ul li a:hover {
+    color: #FF7827;
+    transform: translate(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsiveness */
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95%;
+    }
+    footer .conteudo {
+        height: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    .our-project .container, .how-to-help .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .styled-image {
+        margin: 10px auto;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero .container {
+        transform: translate(0);
+    }
+
+    .div_img {
+        display: flex;
+        width: 90%;
+        margin: 20px;
+    }
+
+    .our-project .div_img {
+        width: 100%;
+    }
+
+    footer .conteudo {
+        height: 100%;
+        height: 100%;
+    }
+
+    footer #quero {
+        font-size: 14pt;
+    }
+
+    footer #de {
+        font-size: 16pt;
+    }
+
+    footer .container-2 {
+        flex-direction: column;
+    }
+
+    footer .container-2 .contact {
+        width: 100%;
+        margin: 0;
+        margin-top: -50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero .btn {
+        padding: 8px 16px;
+        margin: 5px 3px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .our-project h2, .how-to-help h2, .testimonials h2 {
+        font-size: 24pt;
+    }
+
+    .div_img {
+        display: flex;
+        width: 90%;
+        margin: 20px;
+    }
+
+    .our-project .div_img {
+        width: 100%;
+    }
+
+    footer .conteudo {
+        width: 100%;
+        height: 100%;
+    }
+
+    footer #ajude {
+        font-size: 10pt;
+    }
+
+    footer #quero {
+        font-size: 12pt;
+    }
+
+    footer #de {
+        font-size: 18pt;
+    }
+
+    footer .contact {
+        margin: 0 50px;
+        width: auto;
+    }
+
+    footer .container-2 {
+        flex-direction: column;
+    }
+
+    footer .container-2 .contact {
+        width: 100%;
+        margin: 0;
+        margin-top: -50px;
+    }
+
+    footer .contact ul {
+        flex-direction: column;
+    }
+
+    footer .contact ul li {
+        padding: 3px 0;
+    }
+
+    footer .container-2 {
+        flex-direction: column;
+    }
+
+    footer .container-2 .foot_logo {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 30px 0;
+    }
+
+    .hero h1 {
+        font-size: 20px;
+    }
+
+    .hero .btn {
+        padding: 6px 12px;
+        margin: 3px 2px;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .our-project h2, .how-to-help h2, .testimonials h2 {
+        font-size: 20pt;
+    }
+
+    footer .conteudo {
+        width: 80%;
+    }
+
+    footer .conteudo p {
+        font-size: 12pt;
+    }
+
+    footer .conteudo h3 {
+        font-size: 14pt;
+    }
+
+    footer .container-2 {
+        flex-direction: column;
+    }
+
+    footer .container-2 .contact {
+        width: 100%;
+        margin: 0;
+        margin-top: -50px;
+    }
+
+    footer .contact {
+        margin: 0 20px;
+    }
+
+    footer .container-2 .foot_logo p {
+        text-align: left;
+        font-size: 26px;
+    }
+
+    footer .container-2 .foot_logo img {
+        width: 100px;
+        margin: 0;
+        padding: 20px 0;
+    }
+
+    footer .container-2 .foot_logo #solid {
+        font-weight: bold;
+        font-size: 18pt;
+        margin-bottom: -20px;
+    }
+
+    footer .container-2 .foot_logo #solid-1 {
+        color: #D369E7;
+        font-weight: bold;
+        font-size: 22pt;
+    }
+
+    footer .container-2 .foot_logo #solid-2 {
+        color: #FF7827;
+        font-weight: bold;
+        font-size: 16pt;
+        margin-top: -32px;
+    }
+
+    footer .container-1 p {
+        margin: 20px 0;
+    }
+}

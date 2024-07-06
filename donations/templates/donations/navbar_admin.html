@@ -1,0 +1,32 @@
+{% load static %}
+<header>
+    <div class="container_navbar">
+        <a href="{% url 'admin_dashboard' %}" class="logotipo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="70px">
+            <h1>SolidárioMPL</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'admin_dashboard' %}">Início</a></li>
+                <li><a href="{% url 'register_donor' %}">Doadores</a></li>
+                <li><a href="{% url 'register_item' %}">Registrar item</a></li>
+                <li><a href="{% url 'items_for_sale' %}">Items Doados</a></li>
+                <li><a href="{% url 'admin_funds' %}">Fundo</a></li>
+            </ul>
+        </nav>
+        <div class="user">
+            <div class="username">
+                <div class="name">
+                    <p>{{ username }}</p>
+                </div>
+                <div class="hidemenu">
+                    <ul>
+                        <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                        <li><a href="#">Definições</a></li>
+                        <li><a href="{% url 'logout' %}">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+   </div>
+</header>

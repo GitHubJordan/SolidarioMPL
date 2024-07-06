@@ -1,0 +1,87 @@
+<!-- donations/templates/donations/register_item.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Item - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register_item.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+    <div class="container_item">
+        <header>
+            <div class="logo">
+                <img src="{% static 'images/box_donation.png' %}" width="150px" alt="Logo">
+            </div>
+            <h1>Cadastrar Item</h1>
+        </header>
+
+        <main>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                {% if form.errors %}
+                    <div class="error">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <button type="submit">Registrar Item</button>
+            </form>
+
+            <hr>
+
+            <!-- Listagem de Itens em Análise -->
+            <h2>Itens em Análise</h2>
+            <div class="items-list">
+                {% for item in items %}
+                    <div class="item">
+                        <h2>{{ item.name }}</h2>
+                        <p><strong>Descrição:</strong> {{ item.description }}</p>
+                        <p><strong>Preço:</strong> AOA {{ item.price }}</p>
+                        <p><strong>Doado por:</strong> {{ item.donated_by }}</p>
+                        <p><strong>Estado:</strong> {{ item.get_estado_display }}</p>
+                        {% if is_admin %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="item_id" value="{{ item.id }}">
+                                <button type="submit" name="approve">Aprovar</button>
+                                <button type="submit" name="reject">Rejeitar</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <p>Não há itens em análise no momento.</p>
+                {% endfor %}
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

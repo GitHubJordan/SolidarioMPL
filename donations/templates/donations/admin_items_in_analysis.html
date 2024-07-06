@@ -1,0 +1,43 @@
+<!-- donations/admin_items_in_analysis.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">Itens em Análise</h1>
+
+{% if items %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Doador</th>
+                <th>Estado</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.donated_by }}</td>
+                <td>{{ item.estado }}</td>
+                <td>
+                    <form method="post" action="{% url 'admin_items_in_analysis' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button type="submit" name="approve" class="btn btn-success">Aprovar</button>
+                        <button type="submit" name="reject" class="btn btn-danger">Rejeitar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum item em análise.</p>
+{% endif %}
+
+{% endblock %}

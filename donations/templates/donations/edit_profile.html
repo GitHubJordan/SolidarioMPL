@@ -1,0 +1,40 @@
+<!-- donations/templates/donations/edit_profile.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Perfil - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+
+    <div id="profile-container">
+        <h1>Editar Perfil</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

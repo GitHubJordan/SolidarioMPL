@@ -1,0 +1,75 @@
+<!-- donations/templates/donations/user_profile.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuário - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+
+    <div id="profile-container">
+        <div class="profile-header">
+            {% if donor.profile_picture %}
+                <img src="{{ donor.profile_picture.url }}" alt="Foto de Perfil">
+            {% else %}
+                <img src="{% static 'images/default_profile.png' %}" alt="Foto de Perfil Padrão">
+            {% endif %}
+            <h1>{{ user.username }}</h1>
+            <a href="{% url 'edit_profile' %}">Editar Perfil</a>
+        </div>
+        <div class="profile-content">
+            <ul class="tabs">
+                <li class="tab-link active" data-tab="info">Informações do Usuário</li>
+                <li class="tab-link" data-tab="funds">Fundos Doado</li>
+                <li class="tab-link" data-tab="items">Itens Doado</li>
+            </ul>
+            <div id="info" class="tab-content active">
+                <h2>Informações do Usuário</h2>
+                <p><strong>Nome completo:</strong> {{ user.full_name }}</p>
+                <p><strong>Email:</strong> {{ donor.email }}</p>
+                <p><strong>Telefone:</strong> {{ donor.phone }}</p>
+                <p><strong>Data de Criação:</strong> {{ user.date_joined }}</p>
+            </div>
+            <div id="funds" class="tab-content">
+                <h2>Fundos Doado</h2>
+                <p><strong>Total Doado:</strong> AOA {{ total_donated }}</p>
+                <ul>
+                    {% for donation in donations %}
+                        <li>{{ donation.created_at }} - AOA {{ donation.amount }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="items" class="tab-content">
+                <h2>Itens Doado</h2>
+                <ul>
+                    {% for item in donated_items %}
+                        <li>{{ item.name }} - {{ item.get_estado_display }} ({{ item.created_at }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

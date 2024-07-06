@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado - SolidárioMPL</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/thank_you.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  {% if user.is_authenticated %}
+        {% if is_admin %}
+            {% include 'donations/navbar_admin.html' %}
+        {% else %}
+            {% include 'donations/navbar_user.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'donations/navbar.html' %}
+    {% endif %}
+    
+  <div class="container_donate">
+      <header>
+          <h1>Obrigado pela sua Doação {{ username }}!</h1>
+      </header>
+      <main>
+          <p>A sua doação foi recebida com sucesso. Agradecemos a sua generosidade!</p>
+          <img src="{% static 'images/hands1.jpg' %}" alt="Obrigado" class="styled-image">
+      </main>
+      <footer>
+          <p>&copy; 2024 SolidárioMPL. Todos os direitos reservados.</p>
+      </footer>
+  </div>
+</body>
+</html>

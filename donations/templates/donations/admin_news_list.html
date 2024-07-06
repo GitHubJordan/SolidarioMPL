@@ -1,0 +1,33 @@
+<!-- donations/admin_news_list.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">Lista de Notícias</h1>
+
+<div class="container mt-5">
+    <a href="{% url 'admin_news_create' %}" class="btn btn-primary mb-3">Adicionar Nova Notícia</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Data de Criação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for news in news_list %}
+            <tr>
+                <td>{{ news.title }}</td>
+                <td>{{ news.author.username }}</td>
+                <td>{{ news.created_at }}</td>
+                <td>
+                    <a href="{% url 'admin_news_edit' news.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'admin_news_delete' news.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

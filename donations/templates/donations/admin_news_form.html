@@ -1,0 +1,22 @@
+<!-- donations/admin_news_form.html -->
+{% extends "donations/dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center mt-4">{{ form.instance.pk|yesno:"Editar Notícia,Adicionar Nova Notícia" }}</h1>
+
+<div class="container mt-5">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'admin_news_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
