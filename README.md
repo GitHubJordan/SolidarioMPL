@@ -29,7 +29,7 @@ Este projecto foi criado por intermedio da MARIA DO NASCIMENTO uma aluna do INST
 
 1. **Clone o repositório**:
     ```bash
-    git clone https://github.com/seu-usuario/solidarioMPL.git
+    git clone https://github.com/GitHubJordan/solidarioMPL.git
     cd solidarioMPL
     ```
 
