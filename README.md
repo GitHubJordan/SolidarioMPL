@@ -29,7 +29,7 @@ Este projecto foi criado por intermedio da MARIA DO NASCIMENTO uma aluna do INST
 
 1. **Clone o repositório**:
     ```bash
-    git clone https://github.com/seu-usuario/solidarioMPL.git
+    git clone https://github.com/GitHubJordan/solidarioMPL.git
     cd solidarioMPL
     ```
 
@@ -70,7 +70,7 @@ ALLOWED_HOSTS=127.0.0.1, .localhost
 DATABASE_URL=postgres://user:password@localhost:5432/solidariompl
 ```
 
-Uso
+## Uso
 1. Acesse a administração do Django: Navegue para http://127.0.0.1:8000/admin e faça login com as credenciais do superusuário.
 2. Gerencie usuários, doações e solicitações através do painel administrativo.
 3. Navegue pelo site principal para visualizar e interagir com a plataforma como um doador ou beneficiário.
