@@ -11,6 +11,7 @@ SECRET_KEY = "django-insecure-w^2#8hy^y&&lk1arec79a$je#qzhu&iiq8qht5)aq(1gr07w2q
 DEBUG = True
 
 if DEBUG:
+
     def custom_500_view(request, *args, **kwargs):
         from django.views import debug
         from django.http import HttpResponseServerError
@@ -21,11 +22,11 @@ if DEBUG:
         return HttpResponseServerError(response.content)
 
     # Set handler500 to the custom view
-    handler500 = 'donations.custom_500_view'
-handler404 = 'donations.custom_404_view'
+    handler500 = "donations.custom_500_view"
+handler404 = "donations.custom_404_view"
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '192.168.6.87']
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "0.0.0.0", "192.168.60.87"]
 
 
 # Application definition
@@ -51,7 +52,7 @@ MIDDLEWARE = [
 ]
 
 
-#Definindo customUser com usuário padrão
+# Definindo customUser com usuário padrão
 AUTH_USER_MODEL = "donations.CustomUser"
 
 ROOT_URLCONF = "setup.urls"
@@ -117,11 +118,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Default primary key field type
