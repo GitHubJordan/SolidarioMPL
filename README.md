@@ -16,7 +16,7 @@ SolidárioMPL é uma plataforma digital destinada a conectar doadores e benefici
 ## Introdução
 
 SolidárioMPL é um projeto desenvolvido para ajudar na redistribuição de recursos para comunidades carentes. A plataforma permite que doadores registrem itens e serviços que desejam doar, e que beneficiários solicitem esses recursos de acordo com suas necessidades.
-Este projecto foi criado por intermedio da MARIA DO NASCIMENTO uma aluna do INSTITUTO SUPERIOR POLITÉCNICO INTERNACIONAL DE ANGOLA na Faculdade de Engenharia Informática, para o projecto final do ano, a plataforma foi criada e desenvovlido por mim.
+Este projecto foi criado por intermedio da MARIA DO NASCIMENTO uma aluna do INSTITUTO SUPERIOR POLITÉCNICO INTERNACIONAL DE ANGOLA na Faculdade de Engenharia Informática, para o projecto final do ano, a plataforma foi criada e desenvovildo por mim.
 
 ## Funcionalidades
 
